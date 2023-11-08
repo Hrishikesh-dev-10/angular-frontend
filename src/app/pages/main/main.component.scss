@@ -1,0 +1,26 @@
+@import '../../../main-styles.scss';
+
+.layout-box{
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    height: 100%;
+    .page-content{
+        flex-grow: 1;
+        overflow-y: scroll;
+    }
+}
+
+.top-bar{
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background-color: $brown;
+    flex-shrink: 0;
+    h1{
+        color:$beige-light;
+    }
+}
+
