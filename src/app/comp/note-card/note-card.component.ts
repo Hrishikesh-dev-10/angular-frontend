@@ -1,4 +1,7 @@
 import { Component, OnInit,ViewChild,ElementRef,Renderer2,Input } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthCheckService } from 'src/app/services/auth-check.service';
+import { NotesService } from 'src/app/services/notes.service';
 
 @Component({
   selector: 'app-note-card',
@@ -7,16 +10,16 @@ import { Component, OnInit,ViewChild,ElementRef,Renderer2,Input } from '@angular
 })
 export class NoteCardComponent implements OnInit {
 
-  @Input() title:string;
-  @Input() body:string;
+ @Input('notes') public notes:any;
 
   
  @ViewChild('truncator',{static:true})truncator: ElementRef<HTMLElement>;
  @ViewChild('cardText',{static:true})cardText: ElementRef<HTMLElement>;
 
-  constructor(private renderer: Renderer2) { }
+  constructor(private renderer: Renderer2,private router:Router,private checkAuth:AuthCheckService,private noteService : NotesService) { }
 
   ngOnInit() {
+    this.checkAccess()
     let style = window.getComputedStyle(this.cardText.nativeElement,null);
     let viewHeight = parseInt(style.getPropertyValue("height"),10);
     if(this.cardText.nativeElement.scrollHeight>viewHeight)
@@ -26,6 +29,30 @@ export class NoteCardComponent implements OnInit {
     else
     {
       this.renderer.setStyle(this.truncator.nativeElement,'display','none')
+    }
+
+
+  }
+
+  async checkAccess()
+  {
+    await this.checkAuth.checkAuth();
+  }
+
+  async deleteNote(id:any)
+  {
+    try {
+      const data = await this.noteService.deleteNoteCall(id);
+      if(data.status_code===200){
+        alert('Note Deleted')
+        window.location.reload()
+      }
+      else
+      {
+        alert('Please try again.')
+      }
+    } catch (error) {
+      alert('Error! Please try again.')
     }
   }
 

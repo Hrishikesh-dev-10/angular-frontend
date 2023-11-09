@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthCheckService } from 'src/app/services/auth-check.service';
 import { Cookie } from 'src/app/services/cookie.service';
 import { NotesService } from 'src/app/services/notes.service';
 
@@ -12,26 +13,53 @@ import { NotesService } from 'src/app/services/notes.service';
 export class NotesComponent implements OnInit {
 
   cardTitle:string = 'abc';
+  notesData:Array<object>[]=[];
+  isNotes:boolean=false;
 
-  constructor(private cookieService:Cookie,private router:Router,private notesService:NotesService) { }
+  constructor(private cookieService:Cookie,private router:Router,private notesService:NotesService,private checkAuth:AuthCheckService) { }
 
   ngOnInit() {
-    this.checkAccess()
+    
+    this.getNotesData()
   }
 
-  async checkAccess()
+  async getNotesData()
   {
-    let cookie = await this.cookieService.getCookies('access_token')
-    let login_id =  await this.cookieService.getCookies('login_creds')
-    if(!cookie)
+    if(await this.checkAuth.checkAuth())
     {
-      this.router.navigate([''])
+      let login_id =  await this.cookieService.getCookies('login_creds')
+   
+      let data = await this.notesService.getNotesCall(login_id)
+      
+      if(data.status_code===201)
+      {
+        this.isNotes = true;
+      }
+      else
+      {
+        this.isNotes = false;
+        this.notesData=(data.data);
+        
+      }
+      
+      }
     }
-    else
-    {
-      const data = await this.notesService.getNotesCall(login_id);
-      console.log(data)
+   async filterNotes(event:any)
+   {
+    try {
+        if(event.target.value!=='')
+        {
+          let notes = this.notesData.filter((item:any)=>item.title.toLoweCase().includes((event.target.value).toLoweCase()));
+          this.notesData= notes;
+        }
+        else
+        {
+          this.getNotesData();
+        }
+        
+    } catch (error) {
+      console.log()
     }
+   }
 
-  }
 }

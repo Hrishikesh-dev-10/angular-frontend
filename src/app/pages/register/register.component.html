@@ -6,7 +6,7 @@
     <div class="login-block">
         <div class="field">
             <p class="control has-icons-left">
-              <input  [(ngModel)]="email" class="input" type="text" placeholder="Name">
+              <input  [(ngModel)]="username" class="input" type="text" placeholder="Name">
               <span class="icon is-small is-left">
                 <i class="fas fa-user"></i>
               </span>
@@ -14,7 +14,7 @@
           </div>
           <div class="field">
             <p class="control has-icons-left">
-              <input  [(ngModel)]="email" class="input" type="number" placeholder="Phone">
+              <input  [(ngModel)]="phone" class="input" type="number" placeholder="Phone">
               <span class="icon is-small is-left">
                 <i class="fas fa-phone"></i>
               </span>
@@ -38,14 +38,14 @@
           </div>
           <div class="field">
             <p class="control has-icons-left">
-              <input [(ngModel)]="password" class="input" type="password" placeholder="Confirm Password">
+              <input [(ngModel)]="confirmPassword" class="input" type="password" placeholder="Confirm Password">
               <span class="icon is-small is-left">
                 <i class="fas fa-lock"></i>
               </span>
             </p>
           </div>
           <div class="control">
-            <button #submitButton (click)="clickEvent()" class="button is-primary">Submit</button>
+            <button #submitButton (click)="registerUserEvent()" class="button is-primary">Submit</button>
           </div>
     </div>
 

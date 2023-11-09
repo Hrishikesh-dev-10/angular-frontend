@@ -31,4 +31,24 @@ export class AuthService {
         console.log(error)
       }
   }
+
+  async registerUser(requestData:any)
+  {
+    try {
+      const response =await fetch(`${this.basePath}/users/create`,
+      {
+        method:'POST',
+        headers:{
+          "Content-Type": "application/json",
+        },
+        
+        body:JSON.stringify(requestData)
+      })
+       const data = await response.json();
+
+        return(data)
+    } catch (error) {
+      console.log(error)
+    }
+  }
 }

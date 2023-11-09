@@ -1,14 +1,17 @@
 <div #container class="note-card-container">
     <div class="note-card-content">
         <h1 class="note-card-heading">
-            {{title}}
+            {{notes.title}}
         </h1>
         <div #cardText class="note-card-body-container">
-           <p>{{body}}</p>
+           <p>{{notes.body}}</p>
            <div #truncator class="fade-out"></div>
         </div>
     </div>
-    <div class="x-button">
+    <div routerLink="/add-notes/{{notes.id}}" class="edit-button">
+        <i class="fa fa-pencil"></i>
+    </div>
+    <div (click)="deleteNote(notes.id)" class="x-button">
         X
     </div>
 </div>

@@ -26,10 +26,16 @@
         flex-direction: column;
         gap: 30px;
         align-items: center;
-        input{
+        input,textarea{
             border: 1px solid $pink;
         }
      
+    }
+    .add-notes-form{
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        align-items: center;
     }
 }
 
@@ -40,8 +46,41 @@
     }
 }
 
+.input-block{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+.textarea-block{
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+
+}
+.title-input
+{
+    width: 350px;
+}
+.textarea-input{
+    height: 300px;
+    width: 350px;
+    resize: none;
+}
+
 @media screen and (max-width:720px) {
     .add-notes-container{
         width: 350px;
+    }
+    .title-input{
+        width: 80%;
+    }
+    .textarea-input{
+        width: 70%;
+        position: relative;
+        left: 5%;
+        gap: 5px;
+    }
+    .textarea-block{
+        gap: 5px;
     }
 }

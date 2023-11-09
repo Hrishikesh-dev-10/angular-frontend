@@ -2,16 +2,24 @@
     <div class="search-bar-container">
         <div class="field">
             <p class="control has-icons-left">
-              <input class="input" type="text" placeholder="Search">
+              <input (change)="filterNotes($event)" class="input" type="text" placeholder="Search">
               <span class="icon is-small is-left">
                 <i class="fas fa-search"></i>
               </span>
             </p>
           </div>
+          <div class="add-note-button">
+            <button class="button is-success is-light" routerLink="/add-notes">Add Note</button>
+          </div>
     </div>
     <div class="notes-list">
-        <app-note-card title="cardTitle" [body]="'Testing testing '"></app-note-card>
-        <app-note-card title="Title " [body]="'Testing testing '"></app-note-card>
+        <div  class="notes-div">
+            <app-note-card *ngFor="let note of notesData" [notes]="note"></app-note-card>
+        </div>
+       <div *ngIf="isNotes">
+          <h2>No Data Available</h2>
+       </div>
+       
         
     </div>
 </div>

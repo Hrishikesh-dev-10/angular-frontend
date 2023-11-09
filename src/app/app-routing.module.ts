@@ -13,6 +13,7 @@ const routes: Routes = [
     {path:'',component:LoginComponent},
     {path:'register',component:RegisterComponent},
     {path:'add-notes',component:AddNotesComponent},
+    {path:'add-notes/:id',component:AddNotesComponent},
 
   ]}
 ];
