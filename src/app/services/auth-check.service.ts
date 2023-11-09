@@ -15,7 +15,9 @@ export class AuthCheckService {
     if(!access_token || !role_id)
     {
       this.router.navigate(['']);
+      return false
     }
-    return true;
+    else
+      return true;
   }
 }

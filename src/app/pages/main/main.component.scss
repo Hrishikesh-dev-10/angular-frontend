@@ -5,6 +5,7 @@
     flex-direction: column;
     overflow: hidden;
     height: 100%;
+    position: relative;
     .page-content{
         flex-grow: 1;
         overflow-y: scroll;
@@ -22,6 +23,10 @@
     h1{
         color:$beige-light;
         font-size: 32px;
+    }
+    .logout-button{
+        position: absolute;
+        right:20%;
     }
 }
 

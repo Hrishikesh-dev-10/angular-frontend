@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthCheckService } from 'src/app/services/auth-check.service';
 
 @Component({
   selector: 'app-main',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainComponent implements OnInit {
 
-  constructor() { }
+  isLoggedIn:boolean= false;
+  constructor(private authCheck:AuthCheckService) { }
 
   ngOnInit() {
+    
   }
-  
+
 }
