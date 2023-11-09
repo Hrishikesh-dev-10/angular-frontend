@@ -1,0 +1,47 @@
+
+@import '../../../main-styles.scss';
+
+
+.add-notes-container{
+    width: 700px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+  
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    height: 500px;
+    border-radius: 6px;
+    box-shadow: 0px 0px 0.75rem black;
+
+    h1{
+        font-size: 34px;
+    }
+
+    .add-notes-block{
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        align-items: center;
+        input{
+            border: 1px solid $pink;
+        }
+     
+    }
+}
+
+.signup-link{
+    font-weight: 800;
+    &:hover{
+        cursor: pointer;
+    }
+}
+
+@media screen and (max-width:720px) {
+    .add-notes-container{
+        width: 350px;
+    }
+}
