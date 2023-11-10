@@ -27,28 +27,33 @@ export class LoginComponent implements OnInit {
    
   }
   async clickEvent(){
-    if(this.email!==''&&this.password!=='')
-    {
-     let data=await this.authServeice.authService({
-        'email':this.email,
-        'password':this.password
-      })
-      if(data.status_code===200)
-      { 
-        
-        window.document.cookie = 'access_token='+data.token.access_token+';max-age=86400;path=/';
-        window.document.cookie = 'login_creds='+data.data.id+';max-age=86400;path=/';
-        this.router.navigate(['/notes'])
+    try {
+      if(this.email!==''&&this.password!=='')
+      {
+       let data=await this.authServeice.authService({
+          'email':this.email,
+          'password':this.password
+        })
+        if(data.status_code===200)
+        { 
+          
+          window.document.cookie = 'access_token='+data.token.access_token+';max-age=86400;path=/';
+          window.document.cookie = 'login_creds='+data.data.id+';max-age=86400;path=/';
+          this.router.navigate(['/notes'])
+        }
+        else
+        {
+          alert('Login Failed.')
+          this.router.navigate(['/'])
+        }
       }
       else
       {
-        alert('Login Failed.')
-        this.router.navigate(['/'])
+        alert('Error');
       }
+    } catch (error) {
+      alert('Login Failed. Please try again.');
     }
-    else
-    {
-      alert('Error');
-    }
+   
   }
 }

@@ -33,7 +33,7 @@ export class ShareNoteComponent implements OnInit {
         alert('No Users');
       }
     } catch (error) {
-      alert('Error');
+      alert('Error! There are no other users');
     }
   }
 
