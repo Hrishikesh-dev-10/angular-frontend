@@ -102,7 +102,14 @@ export class NotesComponent implements OnInit {
     try {
           if(event.target.value==='')
           {
-            await this.getNotesData();
+            if(this.isShared)
+            {
+              await this.sharedNotes();
+            }
+            else
+            {
+              await this.getNotesData();
+            }
           }
          
          else
