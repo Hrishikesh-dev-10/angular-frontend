@@ -16,7 +16,9 @@
     height: 500px;
     border-radius: 6px;
     box-shadow: 0px 0px 0.75rem black;
-
+    label{
+        color: black;
+    }
     h1{
         font-size: 34px;
     }
@@ -67,6 +69,11 @@
     resize: none;
 }
 
+.buttons-class{
+    display: flex;
+    gap:40px;
+}
+
 @media screen and (max-width:720px) {
     .add-notes-container{
         width: 350px;
@@ -82,5 +89,9 @@
     }
     .textarea-block{
         gap: 5px;
+    }
+    .buttons-class{
+        display: flex;
+        gap:10px;
     }
 }

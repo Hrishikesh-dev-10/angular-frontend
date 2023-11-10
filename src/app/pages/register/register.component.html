@@ -3,6 +3,9 @@
     <div class="login-header">
         <h1>Register</h1>
     </div>
+    <div class="close-button">
+      <button routerLink="/" class="button is-danger">X</button>
+    </div>
     <div class="login-block">
         <div class="field">
             <p class="control has-icons-left">
@@ -45,7 +48,7 @@
             </p>
           </div>
           <div class="control">
-            <button #submitButton (click)="registerUserEvent()" class="button is-primary">Submit</button>
+            <button #submitButton (click)="registerUserEvent()" class="button-submit">Submit</button>
           </div>
     </div>
 

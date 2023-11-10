@@ -1,6 +1,7 @@
 
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpClientModule} from '@angular/common/http'
+import { Cookie } from './cookie.service';
  
 
 @Injectable({
@@ -10,7 +11,7 @@ export class AuthService {
 
   basePath = 'http://localhost:5000/api';
   
-  constructor(private http:HttpClient) {
+  constructor(private http:HttpClient,private cookies:Cookie) {
    
    }
   async authService(reqeustData:any){
@@ -50,5 +51,23 @@ export class AuthService {
     } catch (error) {
       console.log(error)
     }
+  }
+
+  async getAllSUersCall()
+  {
+    let login_id =await this.cookies.getCookies('login_creds');
+    try {
+      const response =await fetch(`${this.basePath}/users/getAll/${login_id}`,
+      {
+        headers:{
+          "Content-Type": "application/json",
+        },
+      })
+       const data = await response.json();
+
+        return(data)
+      } catch (error) {
+        console.log(error)
+      }
   }
 }

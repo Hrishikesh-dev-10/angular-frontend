@@ -9,7 +9,9 @@ import { NoteCardComponent } from './comp/note-card/note-card.component';
 import { LoginComponent } from './pages/login/login.component';
 import { AddNotesComponent } from './pages/add-notes/add-notes.component';
 import { RegisterComponent } from './pages/register/register.component';
-import { HttpClientModule} from '@angular/common/http'
+import { HttpClientModule} from '@angular/common/http';
+import { NoteDetailsComponent } from './pages/note-details/note-details.component';
+import { ShareNoteComponent } from './comp/share-note/share-note.component'
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { HttpClientModule} from '@angular/common/http'
     NoteCardComponent,
     LoginComponent,
     AddNotesComponent,
-    RegisterComponent
+    RegisterComponent,
+    NoteDetailsComponent,
+    ShareNoteComponent
   ],
   imports: [
     BrowserModule,

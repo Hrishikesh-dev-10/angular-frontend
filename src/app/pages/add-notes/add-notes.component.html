@@ -1,6 +1,6 @@
 <div class="add-notes-container">
     <div class="add-notes-block">
-     
+        
         <div class="field input-block">
           <label>Title: </label>
             <p class="control has-icons-left">
@@ -14,8 +14,9 @@
             <label>Note: </label>
             <textarea [(ngModel)]="body" class="input textarea-input" id="" cols="30" rows="10"></textarea>
           </div>
-          <div class="control">
+          <div class="control buttons-class">
             <button #submitButton (click)="isEdit?editNote():addNote()" class="button is-primary">{{isEdit?'Save':'Add Note'}}</button>
+            <button routerLink="/notes" class="button is-danger">Cancel</button>
           </div>
       
        

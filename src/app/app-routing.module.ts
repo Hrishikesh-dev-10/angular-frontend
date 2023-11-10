@@ -5,6 +5,7 @@ import { MainComponent } from './pages/main/main.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { AddNotesComponent } from './pages/add-notes/add-notes.component';
+import { NoteDetailsComponent } from './pages/note-details/note-details.component';
 
 
 const routes: Routes = [
@@ -14,7 +15,7 @@ const routes: Routes = [
     {path:'register',component:RegisterComponent},
     {path:'add-notes',component:AddNotesComponent},
     {path:'add-notes/:id',component:AddNotesComponent},
-
+    {path:'note-details/:id',component:NoteDetailsComponent},
   ]}
 ];
 

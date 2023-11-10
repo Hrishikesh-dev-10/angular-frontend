@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthCheckService } from 'src/app/services/auth-check.service';
 
 @Component({
@@ -8,11 +9,26 @@ import { AuthCheckService } from 'src/app/services/auth-check.service';
 })
 export class MainComponent implements OnInit {
 
-  isLoggedIn:boolean= false;
-  constructor(private authCheck:AuthCheckService) { }
+ 
+  constructor(private authCheck:AuthCheckService,private router:Router) { }
 
   ngOnInit() {
-    
+
+  }
+  async checkAuth()
+  {
+    try {
+     
+    } catch (error) {
+      
+    }
   }
 
+  async logout()
+  {
+    
+    document.cookie = 'access_token='+';max-age='+(0) +'; Path=/';
+    document.cookie = 'login_creds='+';max-age='+(0) +'; Path=/';
+    this.router.navigate(['/'])
+  }
 }

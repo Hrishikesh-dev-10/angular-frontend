@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild,NgModule } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild,NgModule, Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -13,6 +13,7 @@ import { AuthService } from 'src/app/services/auth.service';
 export class LoginComponent implements OnInit {
 
   @ViewChild('submitButton',{static:false}) submitButton:ElementRef<HTMLElement>;
+
 
   email:string='';
   password:string='';
@@ -35,8 +36,8 @@ export class LoginComponent implements OnInit {
       if(data.status_code===200)
       { 
         
-        window.document.cookie = 'access_token='+data.token.access_token+';max-age=300;path=/';
-        window.document.cookie = 'login_creds='+data.data.id+';max-age=300;path=/';
+        window.document.cookie = 'access_token='+data.token.access_token+';max-age=86400;path=/';
+        window.document.cookie = 'login_creds='+data.data.id+';max-age=86400;path=/';
         this.router.navigate(['/notes'])
       }
       else

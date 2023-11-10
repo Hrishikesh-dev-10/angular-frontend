@@ -35,6 +35,7 @@ export class RegisterComponent implements OnInit {
           'phone':this.phone,
           'password':this.password
         })
+        console.log(data)
         if(data.status_code===200)
         {
           this.router.navigate(['/'])

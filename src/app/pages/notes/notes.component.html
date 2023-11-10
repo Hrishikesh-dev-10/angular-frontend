@@ -1,8 +1,11 @@
 <div class="main-container">
     <div class="search-bar-container">
+      <div class="notes-heading"> 
+        {{isShared?'Shared Notes':'My Notes'}}
+      </div>
         <div class="field">
             <p class="control has-icons-left">
-              <input (change)="filterNotes($event)" class="input" type="text" placeholder="Search">
+              <input (input)="filterNotes($event)" class="input" type="text" placeholder="Search Note">
               <span class="icon is-small is-left">
                 <i class="fas fa-search"></i>
               </span>
@@ -10,11 +13,13 @@
           </div>
           <div class="add-note-button">
             <button class="button is-success is-light" routerLink="/add-notes">Add Note</button>
+            <button class="button is-success is-danger" (click)="isShared?getNotesData():sharedNotes()">{{isShared?'My Notes':'Shared Notes'}}</button>
+            <button class="button is-success is-danger" (click)="logout()">Logout</button>
           </div>
     </div>
     <div class="notes-list">
         <div  class="notes-div">
-            <app-note-card *ngFor="let note of notesData" [notes]="note"></app-note-card>
+            <app-note-card  *ngFor="let note of notesData" [notes]="note" [isShared]="isShared"></app-note-card>
         </div>
        <div *ngIf="isNotes">
           <h2>No Data Available</h2>

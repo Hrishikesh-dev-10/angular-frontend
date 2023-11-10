@@ -1,17 +1,27 @@
 <div #container class="note-card-container">
-    <div class="note-card-content">
-        <h1 class="note-card-heading">
-            {{notes.title}}
+    <div class="note-card-content" >
+        <h1 routerLink="/note-details/{{isShared?notes.notes_id:notes.id}}" class="note-card-heading">
+            {{notes.title}} 
+            
         </h1>
         <div #cardText class="note-card-body-container">
            <p>{{notes.body}}</p>
            <div #truncator class="fade-out"></div>
         </div>
     </div>
-    <div routerLink="/add-notes/{{notes.id}}" class="edit-button">
+    <div *ngIf="!isShared" (click)="setShare(notes.id)" class="share-button">
+        <i class="fa fa-share"></i>
+    </div>
+    <div *ngIf="!isShared" routerLink="/add-notes/{{notes.id}}" class="edit-button">
         <i class="fa fa-pencil"></i>
     </div>
-    <div (click)="deleteNote(notes.id)" class="x-button">
+    <div *ngIf="!isShared" (click)="deleteNote(notes.id)" class="x-button">
         X
+    </div>
+    <div class="shared-by-div">
+        {{isShared?'by- '+notes.username:''}}
+    </div>
+    <div *ngIf="shareEnable">
+        <app-share-note [note_share]="note_share"></app-share-note>
     </div>
 </div>

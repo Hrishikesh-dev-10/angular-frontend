@@ -1,0 +1,12 @@
+<div class="share-note-model">
+    <div class="share-note-header">
+        <h1>Share Note</h1>
+    </div>
+    <div class="share-note-block">
+        <input (input)="filterUsers($event)" placeholder="Users" type="text" class="input search-user">
+        <div class="users-list">
+            
+            <li   *ngFor="let users of filteredUserArray" (click)="shareNote(note_share,users.id)">{{users.username}}</li>
+        </div>
+    </div>
+</div>

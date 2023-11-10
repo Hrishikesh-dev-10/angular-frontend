@@ -12,13 +12,18 @@ export class NoteCardComponent implements OnInit {
 
  @Input('notes') public notes:any;
 
-  
+ @Input('isShared') public isShared:any;
+
+ shareEnable:boolean = false;
+ note_share:number = null;
+
  @ViewChild('truncator',{static:true})truncator: ElementRef<HTMLElement>;
  @ViewChild('cardText',{static:true})cardText: ElementRef<HTMLElement>;
 
   constructor(private renderer: Renderer2,private router:Router,private checkAuth:AuthCheckService,private noteService : NotesService) { }
 
   ngOnInit() {
+   
     this.checkAccess()
     let style = window.getComputedStyle(this.cardText.nativeElement,null);
     let viewHeight = parseInt(style.getPropertyValue("height"),10);
@@ -52,8 +57,13 @@ export class NoteCardComponent implements OnInit {
         alert('Please try again.')
       }
     } catch (error) {
+      console.log(error)
       alert('Error! Please try again.')
     }
   }
-
+  async setShare(id:any)
+  {
+    this.shareEnable=!this.shareEnable
+    this.note_share= id;
+  }
 }

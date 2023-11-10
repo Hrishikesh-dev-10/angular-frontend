@@ -1,0 +1,52 @@
+
+@import '../../../main-styles.scss';
+.note-details-contianer{
+    width: 100%;
+    height: 100%;
+    
+    position: relative;
+    .note-details-block{
+        width: 500px;
+        height: 300px;
+        border-radius: 6px;
+        background: $beige-light;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+        gap: 30px;
+        .note-details-close{
+            position: absolute;
+            right: 2%;
+        }
+
+        .note-details{
+            position: absolute;
+            left: 50%;
+            top: 30%;
+            transform: translate(-50%,-50%);
+        }
+        h1{
+            font-size: 30px;
+            font-weight: 600;
+            color: black;
+        }
+        span{
+            color: black;
+        }
+    }
+}
+
+@media screen and (max-width:720px) {
+    .note-details-contianer{
+        width:90%;
+        left: 5%;
+        .note-details-block{
+            width: 90%;
+        }
+    }
+}
